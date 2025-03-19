@@ -158,3 +158,24 @@ button:active {
   min-width: 250px;
   text-align: center;
 }
+
+button {
+  font-size: 14px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: var(--container-bg);
+  color: var(--text-color);
+  border: 1px solid var(--highlight-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--highlight-color);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
