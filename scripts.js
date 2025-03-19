@@ -163,7 +163,13 @@ function addCharacterBack() {
 
 function exportTeams() {
   // Example global 'teams' array. Replace with your actual data structure
-  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(teams, null, 2));
+  const fixedTeams = teams.map(team => ({
+    name: team.name, // Retain the team name
+    members: team.members.map(member => member.name) // Extract just the character names
+  }));
+
+  // Generate the JSON file
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({ teams: fixedTeams }, null, 2));
   const downloadAnchor = document.createElement("a");
 
   // Set up the download link
@@ -174,6 +180,9 @@ function exportTeams() {
   document.body.appendChild(downloadAnchor);
   downloadAnchor.click();
   document.body.removeChild(downloadAnchor);
+
+  alert("Teams exported successfully!");
+}
 
   alert("Teams exported successfully!");
 }
