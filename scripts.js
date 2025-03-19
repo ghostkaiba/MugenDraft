@@ -160,3 +160,20 @@ function addCharacterBack() {
     document.getElementById("addButton").disabled = true;
   }
 }
+
+function exportTeams() {
+  // Example global 'teams' array. Replace with your actual data structure
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(teams, null, 2));
+  const downloadAnchor = document.createElement("a");
+
+  // Set up the download link
+  downloadAnchor.setAttribute("href", dataStr);
+  downloadAnchor.setAttribute("download", "teams.json");
+
+  // Trigger the download
+  document.body.appendChild(downloadAnchor);
+  downloadAnchor.click();
+  document.body.removeChild(downloadAnchor);
+
+  alert("Teams exported successfully!");
+}
